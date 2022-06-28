@@ -13,7 +13,7 @@ export default function Sidebar(props) {
    * using the "\n" newline character as the divider
    */
 
-  const noteElements = props.notes.map((note, index) => (
+  const noteElements = props.notes.map((note) => (
     <div key={note.id}>
       <div
         className={`title ${
@@ -22,7 +22,10 @@ export default function Sidebar(props) {
         onClick={() => props.setCurrentNoteId(note.id)}
       >
         <h4 className='text-snippet'>{note.body.split('\n')[0]}</h4>
-        <button className='delete-btn'>
+        <button
+          className='delete-btn'
+          onClick={(event) => props.deleteNote(event, note.id)}
+        >
           <i className='gg-trash trash-icon'></i>
         </button>
       </div>
